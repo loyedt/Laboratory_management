@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="banner-info">
+      <table class="userresult">
+        <tr>
+            <th>Date</th>
+            <th>Test</th>
+            <th>Result</th>
+        </tr>
+        
+        {% for res in cres %}
+        <tr>
+            
+            <td>{{res.testdate}}</td>
+            <td>Cholesterol</td>
+            <td><a href="{% url 'cholesterolview' tstrs_id=res.id  %}">Result</a></td>
+        </tr>
+        {% endfor %}
+        {% for res in bres %}
+        <tr>
+            
+            <td>{{res.testdate}}</td>
+            {% if res.fasting %}
+              <td>Blood sugar fasting</td>
+            {% else %}
+              <td>Blood sugar </td>
+            {%endif%}
+            <td><a href="{% url 'bloodsugarview' tstrs_id=res.id  %}">Result</a></td>
+        </tr>
+        {% endfor %}
+        {% for res in ures %}
+        <tr>
+            
+            <td>{{res.testdate}}</td>
+            <td>Urinalysis</td>
+            <td><a href="{% url 'urinalysisview' tstrs_id=res.id  %}">Result</a></td>
+            
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}

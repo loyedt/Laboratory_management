@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="banner-info">
+      <form action="result" method="POST">
+        {% csrf_token %}
+        <input type="number"   name="tstno" placeholder="TEST NO">
+        <input type="number"   name="phno"  placeholder="Phone No">
+        <button type="submit" >Submit</button>
+      </form>
+      <div>
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

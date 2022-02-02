@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/accountstyle.css' %}">
+</head>
+<body>
+    
+    <div class="bg-modal">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <form action="login" method="post">
+              {% csrf_token %}
+              <input type="text"    name="username"    placeholder="Username">
+              <input type="password" name="password" placeholder="Password">
+              <button type="submit" class="btn btn-appoint">LOGIN</button>
+              <li class=""><a href="register">Signup</a></li>
+            </form>
+        </div>
+    </div>
+    <div>
+        {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
